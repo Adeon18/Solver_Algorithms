@@ -2,6 +2,7 @@
 Implemention of the Maze ADT using a 2-D array.
 """
 import turtle
+import pygame
 from dataclasses import dataclass
 from lliststack import Stack
 
@@ -20,7 +21,7 @@ class Maze:
     PATH_TOKEN = 3
     TRIED_TOKEN = 4
 
-    def __init__(self, maze_file: str, visualization=True):
+    def __init__(self, maze_file: str, visualization=None):
         """
         Creates a maze object with all cells marked as open.
         """
@@ -109,9 +110,10 @@ class Maze:
 
                 # HERE SHOULD BE THE GRAPHICS
                 if self.visualization:
-                    myPen.clear()
-                    drawMaze(self.maze)
-                    myPen.getscreen().update()
+                    self.visualization.all_sprites.update()
+                    self.visualization.draw()
+                    self.visualization.events()
+                    pygame.time.wait(self.visualization.TIMESTEP)
 
                 self._mark_tried(current_cell.row, current_cell.col)
 
@@ -128,9 +130,10 @@ class Maze:
 
             # HERE SHOULD BE THE GRAPHICS
             if self.visualization:
-                myPen.clear()
-                drawMaze(self.maze)
-                myPen.getscreen().update()
+                self.visualization.all_sprites.update()
+                self.visualization.draw()
+                self.visualization.events()
+                pygame.time.wait(self.visualization.TIMESTEP)
 
         if self._exit_found(current_cell.row, current_cell.col):
             self._mark_path(current_cell.row, current_cell.col)
