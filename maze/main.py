@@ -1,6 +1,5 @@
 '''
-main module for the chess
-pygame interface is located here
+Main script with visualization
 '''
 import pygame
 import sys
@@ -12,6 +11,9 @@ from pygame_helpers import *
 
 
 class Game:
+    """
+    A general visualization class for pygame
+    """
     DARKPINK = (219, 0, 189)
     DARKBLUE = (95, 0, 219)
     LIGHTBLUE = (138, 138, 219)
@@ -48,6 +50,9 @@ class Game:
         self.create_maze()
 
     def run(self):
+        """
+        Run the graphics
+        """
         # game loop - set self.playing = False to end the game
         self.playing = True
 
@@ -71,7 +76,7 @@ class Game:
 
     def update(self):
         """
-        The whole game process logic that need to be updated each second
+        The whole visualization
         """
         pygame.time.wait(2000)
         self.maze_obj.find_path()
@@ -103,21 +108,6 @@ class Game:
                 if event.key == pygame.K_DOWN:
                     self.TIMESTEP += 10
 
-    def wait_for_key(self):
-        """
-        Wait for ANY key pressed by the user
-        """
-        pygame.event.wait()
-        waiting = True
-        while waiting:
-            self.clock.tick(FPS)
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    waiting = False
-                    self.quit()
-                if event.type == pygame.KEYUP:
-                    waiting = False
-
     def draw_text(self, text, size, color, x, y, align='center', fontname="Consolas"):
         """
         Helper for drawing text on the screen
@@ -144,7 +134,6 @@ class Game:
         if align == "center":
             text_rect.center = (x, y)
         self.screen.blit(text_surface, text_rect)
-
 
 
 if __name__ == "__main__":
