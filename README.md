@@ -50,7 +50,7 @@ Before you choose, close down the program and edit the coresponding file in data
 
 Enter a number: 
 ```
-Algoritms take the problems from **data** folder, so if you want _your_ problem to be edited you can edit a file with the specific name.
+Algoritms take the problems from **data** folder, so if you want _your_ problem to be solved you can edit a file with the specific name.
 
 When you choose an option you are going to end up with windows like these:
 
