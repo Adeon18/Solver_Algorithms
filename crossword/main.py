@@ -27,7 +27,11 @@ class Visualization:
     LIGHTGREEN = (116, 250, 95)
     COLORS = [LIGHTBLUE, LIGHTPINK, LIGHTRED, LIGHTPURPLE, LIGHTYELLOW, LIGHTGREEN]
     LETTERSIZE = 67
+
     def __init__(self):
+        """
+        Initialize pygame
+        """
         pygame.mixer.pre_init(44100, -16, 2, 2048)
         pygame.mixer.init()
         pygame.init()
@@ -49,7 +53,7 @@ class Visualization:
 
     def new(self):
         """
-        New game
+        New visual(Everything is initialized here)
         """
         # initialize all variables and do all the setup for a new game
         self.all_sprites = pygame.sprite.LayeredUpdates()
@@ -99,17 +103,19 @@ class Visualization:
         for i in range(len(self.crossword.field)):
             for j in range(len(self.crossword.field[i])):
                 if self.crossword.field[i][j].islower():
-                    self.draw_text(self.crossword.field[i][j], 48, self.DARKBLUE, 75 + j * 48, 200 + i*48)
+                    self.draw_text(self.crossword.field[i][j], 48, self.DARKBLUE, 90 + j * 48, 200 + i*48)
                 elif self.crossword.field[i][j].isupper():
                     if color:
-                        self.draw_text(self.crossword.field[i][j], 48, color, 75 + j * 48, 200 + i*48)
+                        self.draw_text(self.crossword.field[i][j], 48, color, 90 + j * 48, 200 + i*48)
                     else:
-                        self.draw_text(self.crossword.field[i][j], 48, self.LIGHTPINK, 75 + j * 48, 200 + i*48)
+                        self.draw_text(self.crossword.field[i][j], 48, self.LIGHTPINK, 90 + j * 48, 200 + i*48)
                 
         pygame.display.flip()
 
     def events(self):
-        # catch all events here
+        """
+        All events are caught here(including time warp)
+        """
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.quit()
