@@ -24,6 +24,8 @@ class Crossword:
         first block of file is its field with words
         separated by empty line goes target words, each in new line
         '''
+
+        # read the game field
         field = []
         file = open(file_path, 'r')
         while True:
@@ -32,6 +34,7 @@ class Crossword:
             if not line:
                 break
 
+        # read targt words
         target_words = []
         line = file.readline().split()
         while True:
@@ -51,15 +54,20 @@ class Crossword:
             new_pos = [pos[0] + dirr[0], pos[1] + dirr[1]]
             
             try:
-                # print(new_pos, word, letter, self.field[new_pos[0]][new_pos[1]])
+                # if letter on field by its direction equals requiered letter
                 if self.field[new_pos[0]][new_pos[1]].lower() == word[letter]:
+                    # make this letter upper, to show that it's in
                     self.field[new_pos[0]][new_pos[1]].upper()
                     if recurse(dirr, letter + 1, new_pos, word):
+                        # if we've got the whole word, start adding useful information
                         self.boocked_positions.append(new_pos)
                         self.temp_pos.append(new_pos)
                         return True
                     else:
                         if new_pos not in self.boocked_positions:
+                            # if this word wasn't found on the needed position
+                            # backtrack and lower all the letters
+                            # if this leter is a part of other word, do not erase it
                             self.field[new_pos[0]][new_pos[1]].lower()
                         return False
             except IndexError:
@@ -73,6 +81,8 @@ class Crossword:
             for letter in row:
                 for word in self.target_words:
                     if word and word[0] == letter:
+                        # if the first letter of word is our current letter on field
+                        # make it upper and go recurse through all directions to find the word
                         self.field[i][j].upper()
                         for dirr in DIRECTIONS:
                             if recurse(dirr, 1, [i, j], word):
@@ -84,6 +94,7 @@ class Crossword:
             i += 1
             j = 0
 
+        # double check if all found words are ok
         for pos in self.boocked_positions:
             self.field[pos[0]][pos[1]] = self.field[pos[0]][pos[1]].upper()
 
