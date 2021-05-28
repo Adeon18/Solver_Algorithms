@@ -3,7 +3,7 @@ Main script with visualization
 '''
 import pygame
 import sys
-from os import path
+from os import path, pardir
 
 import time
 from maze import *
@@ -37,7 +37,8 @@ class Game:
         """
         Load all the external data
         """
-        game_folder = path.dirname(__file__)
+        game_folder = path.dirname(path.join(__file__, pardir))
+        data_folder = path.join(game_folder, 'data')
 
     def new(self):
         """
@@ -45,7 +46,7 @@ class Game:
         """
         # initialize all variables and do all the setup for a new game
         self.all_sprites = pygame.sprite.LayeredUpdates()
-        self.maze_obj = Maze('maze_file.txt', visualization=self)
+        self.maze_obj = Maze('data/maze.txt', visualization=self)
         self.TIMESTEP = 50
         self.create_maze()
 

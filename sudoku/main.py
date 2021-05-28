@@ -3,7 +3,7 @@ Main script with visualization
 '''
 import pygame
 import sys
-from os import path
+from os import path, pardir
 import random
 
 import time
@@ -43,7 +43,8 @@ class Visualization:
         """
         Load all the external data
         """
-        game_folder = path.dirname(__file__)
+        game_folder = path.dirname(path.join(__file__, pardir))
+        data_folder = path.join(game_folder, 'data')
 
     def new(self):
         """
@@ -51,7 +52,7 @@ class Visualization:
         """
         # initialize all variables and do all the setup for a new game
         self.all_sprites = pygame.sprite.LayeredUpdates()
-        self.sudoku = Sudoku("condition.txt", self)
+        self.sudoku = Sudoku("data/sudoku.txt", self)
         self.TIMESTEP = 200
 
 
