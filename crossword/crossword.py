@@ -2,7 +2,7 @@
 module containing crossword solving algorithm using backtracking
 '''
 
-DIRECTIONS = [[-1, 0], [-1, -1], [0, -1], [1, 0], [0, 1], [1, 1], [-1, 1], [1, -1]]
+DIRECTIONS = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]]
 
 class Crossword:
     '''
@@ -15,6 +15,8 @@ class Crossword:
         '''
         self.field, self.target_words = self.read_from_file(file_path)
         self.boocked_positions = []
+        self.completed_words = []
+        self.temp_pos = []
 
     def read_from_file(self, file_path):
         '''
@@ -54,9 +56,11 @@ class Crossword:
                     self.field[new_pos[0]][new_pos[1]].upper()
                     if recurse(dirr, letter + 1, new_pos, word):
                         self.boocked_positions.append(new_pos)
+                        self.temp_pos.append(new_pos)
                         return True
                     else:
-                        self.field[new_pos[0]][new_pos[1]].lower()
+                        if new_pos not in self.boocked_positions:
+                            self.field[new_pos[0]][new_pos[1]].lower()
                         return False
             except IndexError:
                 if letter == len(word):
@@ -71,8 +75,11 @@ class Crossword:
                     if word and word[0] == letter:
                         self.field[i][j].upper()
                         for dirr in DIRECTIONS:
-                            if recurse(dirr, 1, (i, j), word):
-                                self.boocked_positions.append((i, j))
+                            if recurse(dirr, 1, [i, j], word):
+                                self.boocked_positions.append([i, j])
+                                self.temp_pos.append([i, j])
+                                self.completed_words.append(self.temp_pos)
+                                self.temp_pos = []
                 j += 1
             i += 1
             j = 0
