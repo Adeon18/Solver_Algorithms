@@ -6,9 +6,9 @@
 - Sudoku solver
 - Maze solver
 - Crossword solver
-- Graph Colorer
+- Graph Colorizer
 
-These algoritms are either provided with visual support using [pygame](https://www.pygame.org), or just with terminal output where pygame support was not possible.
+These algoritms are either provided with visual support using [pygame](https://www.pygame.org), or just with terminal output where pygame support was not possible(Graph Colorizer).
 
 ## Installation
 
@@ -32,7 +32,7 @@ pip install -r requirements.txt
 
 ## Usage
 
-All you need to do is run the script **main.py** in terminal or via Text Editor and you're good to go.
+All you need to do is run the script **main.py** in terminal from the root project folder or via Text Editor and you're good to go.
 
 ```bash
 python -m main.py
@@ -56,6 +56,7 @@ When you choose an option you are going to end up with windows like these:
 
 ![maze](images/maze.png)
 ![sudoku](images/sudoku.png)
+![crossword](images/crossword.png)
 
 You can edit the dalay speed between each step of the algoritm using **UP** and **DOWN** keys on your keyboard.
 
@@ -75,7 +76,7 @@ Everything else is quite simple. **Enjoy!**
 - Algoritms visualization with pygame and README - [Ostap Trush](https://github.com/Adeon18)
 - Crossword solver algorithm - [Olexiy Hoev](https://github.com/alexg-lviv)
 - Maze solver algorithm - [Alina Muliak](https://github.com/alinamuliak)
-- Graph colorer - [Daryna Kosyk](https://github.com/cosssec)
+- Graph Colorizer - [Daryna Kosyk](https://github.com/cosssec)
 - Sudoku solver algorithm - [Daria Shabatska](https://github.com/S-Daria)
 
 

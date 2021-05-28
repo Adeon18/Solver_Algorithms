@@ -39,7 +39,7 @@ class Visualization:
         self.screen = pygame.display.set_mode((800, 800))
         #self.screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
         self.scr_width, self.scr_height = pygame.display.get_surface().get_size()
-        pygame.display.set_caption("Sudoku Solver")
+        pygame.display.set_caption("Crossword Solver")
         # Load data and start te clock
         self.clock = pygame.time.Clock()
         self.load_data()
@@ -57,7 +57,7 @@ class Visualization:
         """
         # initialize all variables and do all the setup for a new game
         self.all_sprites = pygame.sprite.LayeredUpdates()
-        self.crossword = Crossword("test_1.txt", self)
+        self.crossword = Crossword("data/crossword.txt", self)
         self.TIMESTEP = 50
 
 
