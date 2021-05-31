@@ -14,7 +14,7 @@ scripts = {
     1: "maze/main.py",
     2: "sudoku/main.py",
     3: "crossword/main.py",
-    4: "coloring-problem/main.py",
+    4: "graph_colorizer/main.py",
 }
 
 print("Hello! This is a script launcher. Choose a number of the script you'd like to run.")

@@ -112,5 +112,5 @@ class Graph:
 
 
 if __name__ == "__main__":
-    graph = Graph(read_file("graph_matrix.txt"), 4)
+    graph = Graph(read_file("data/graph_matrix.txt"), 4)
     print(graph.graph_color_final())
