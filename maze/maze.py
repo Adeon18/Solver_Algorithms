@@ -1,5 +1,5 @@
 """
-Implemention of the Maze ADT using a 2-D array.
+Implemention of the Maze ADT.
 """
 import turtle
 import pygame
@@ -42,9 +42,6 @@ class Maze:
             lines = f.readlines()
         for i in range(len(lines)):
             line = list(map(int, lines[i].split()))
-
-            assert len(line) == len(
-                lines), "Wrong number of symbols, please check your file"
 
             if -1 in line:
                 self._start = _CellPosition(i, line.index(-1))
