@@ -80,6 +80,10 @@ Everything else is quite simple. **Enjoy!**
 - Sudoku solver algorithm - [Daria Shabatska](https://github.com/S-Daria)
 
 
-## License
+## License and Usage
+
+Feel free to use the files with attribution(As written in the licence). 
+
+Module are desined specifically to be **easily disconnected from the GUI and used in your own programs**. Enjoy!
 
 [MIT](https://choosealicense.com/licenses/mit/)
