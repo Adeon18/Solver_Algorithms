@@ -23,7 +23,7 @@ class Maze:
 
     def __init__(self, maze_file: str, visualization=None):
         """
-        Creates a maze object with all cells marked as open.
+        Creates a maze object using _build_maze func.
         """
         self._start = None
         self._exit = None
@@ -33,8 +33,8 @@ class Maze:
     def _build_maze(self, filename: str):
         """
         Builds a maze based on a text format in the given file.
-        The grid must be square, ie an equal number of columns and rows;
-        the initial cell and the final cell must be present.
+        
+        The initial cell and the final cell must be present.
         Otherwise an error with the corresponding message will be raised.
         """
         maze = []
