@@ -57,7 +57,7 @@ class Visualization:
         """
         # initialize all variables and do all the setup for a new game
         self.all_sprites = pygame.sprite.LayeredUpdates()
-        self.crossword = Crossword("data/crossword.txt", self)
+        self.crossword = Crossword("../data/crossword.txt", self)
         self.TIMESTEP = 50
 
 

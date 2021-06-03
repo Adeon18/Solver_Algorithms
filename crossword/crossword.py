@@ -95,7 +95,6 @@ class Crossword:
                     if word and word[0] == letter:
                         # if the first letter of word is our current letter on field
                         # make it upper and go recurse through all directions to find the word
-                        self.field[i][j] = self.field[i][j].upper()
                         # For visual repesentation
                         if self.vizual:
                             self.vizual.draw()
@@ -103,7 +102,9 @@ class Crossword:
                             pygame.time.wait(self.vizual.TIMESTEP)
 
                         for dirr in DIRECTIONS:
+                            self.field[i][j] = self.field[i][j].upper()
                             if recurse(dirr, 1, [i, j], word):
+
                                 self.boocked_positions.append([i, j])
                                 self.temp_pos.append([i, j])
                                 self.completed_words.append(self.temp_pos)
